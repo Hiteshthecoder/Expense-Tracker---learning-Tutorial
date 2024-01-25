@@ -3,7 +3,6 @@ moneyBox
 *********
 
 Simple expenses tracker build using Kivy and Firebase.
-*(Still in progress)*
 
 .. image:: docs/img/seneca-wallet-design.png
 
