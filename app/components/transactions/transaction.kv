@@ -1,0 +1,69 @@
+#:import hex kivy.utils.get_color_from_hex
+
+
+<Transaction>
+
+    type: type
+    description: description
+    amount: amount
+
+    orientation: "horizontal"
+
+    ImageButton:
+        id: type
+        source: ""
+        size: self.texture_size
+        size_hint: 0.2, 1
+
+    Label:
+        id: description
+        text: ""
+        halign: 'left'
+        valign: 'center'
+        font_name: 'assets/fonts/Roboto-Regular.ttf'
+        font_size: ('13sp')
+        text_size: self.size
+        size_hint: 1, 1
+
+    Label:
+        id: amount
+        text: ""
+        halign: 'right'
+        valign: 'center'
+        font_name: 'assets/fonts/Roboto-Regular.ttf'
+        font_size: ('13sp')
+        text_size: self.size
+        size_hint: 0.4, 1
+
+<DailyTransactions>
+
+    transaction_date: transaction_date
+    daily_total: daily_total
+
+    orientation: "horizontal"
+    size_hint_y: 0.5
+
+    canvas:
+        Color:
+            rgba: hex("#2D1340")
+        Line:
+            points:(self.pos[0], self.pos[1], 1.1*self.size[0], self.pos[1])
+            width: 1.5
+
+    Label:
+        id: transaction_date
+        text: "Monday 20"
+        halign: 'left'
+        font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
+        font_size: ('14sp')
+        text_size: self.size
+        size_hint: 1, 1
+
+    Label:
+        id: daily_total
+        text: "S/. 86.80"
+        halign: 'right'
+        font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
+        font_size: ('13sp')
+        text_size: self.size
+        size_hint: 0.4, 1

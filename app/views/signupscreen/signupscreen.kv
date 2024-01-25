@@ -1,0 +1,140 @@
+#:import hex kivy.utils.get_color_from_hex
+
+<Label>
+    font_name: 'assets/fonts/Roboto-Regular.ttf'
+    color: hex('#333333')
+
+<Button>
+    background_normal: ''
+    background_down: ''
+    color: hex('#FDFDFD')
+
+<TextInput>
+    multiline: False
+    background_normal: 'assets/img/white_square.jpg'
+    background_active: 'assets/img/white_square.jpg'
+    font_name: "assets/fonts/Roboto-Regular.ttf"
+    font_size: ('12sp')
+    foreground_color: hex('#333333')
+    padding: [16, 8]
+
+
+<SignupScreen>
+
+    username: username
+    first_name: first_name
+    last_name: last_name
+    email: email
+    password: password
+    error: error
+
+
+    FloatLayout:
+        size: root.width, root.height
+
+        canvas.before:
+            Color:
+                rgba: hex('#F8F8F8')
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "assets/img/background.png"
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 0.8, 0.6
+            pos_hint: {"center_x": 0.5, "top": 0.8}
+            padding: 72
+
+            canvas:
+                Color:
+                    rgba: hex('#FDFDFD')
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [48]
+
+            ImageButton:
+                source: 'assets/img/Back.png'
+                size_hint: (None, None)
+                pos_hint: {"x": -0.1}
+                size: self.texture_size
+                on_press: root.manager.current = 'login_screen'
+
+            Label:
+                text: "create\naccount"
+                font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
+                font_size: ('36sp')
+                halign: "left"
+                line_height: 0.8
+                size_hint: 1, 0.4
+                text_size: self.size
+
+            BoxLayout:
+                orientation: "vertical"
+                padding: [0, 48, 0, 0]
+                spacing: 24
+                size_hint: 1, 1
+
+                InputField:
+                    TextInput:
+                        id: username
+                        cursor_color: hex('#333333')
+                        hint_text: "username"
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    spacing: 24
+                    size_hint: 1, 1
+
+                    InputField:
+                        TextInput:
+                            id: first_name
+                            cursor_color: hex('#333333')
+                            hint_text: "first name"
+
+                    InputField:
+                        TextInput:
+                            id: last_name
+                            cursor_color: hex('#333333')
+                            hint_text: "last name"
+
+                InputField:
+                    TextInput:
+                        id: email
+                        cursor_color: hex('#333333')
+                        hint_text: "email"
+
+                InputField:
+                    TextInput:
+                        id: password
+                        cursor_color: hex('#333333')
+                        hint_text: "password"
+
+                Label:
+                    id: error
+                    text: ''
+                    color: hex('#C7444A')
+                    font_size: ('10sp')
+                    size_hint: 1, 0.4
+                    text_size: self.size
+                    halign: 'left'
+                    valign: 'top'
+                    pos_hint: {"x": 0.05}
+
+            RoundedButton:
+                back_color: hex('#2D1340')
+                color: hex('#FDFDFD')
+                border_radius: [32]
+                text: "sign up"
+                font_size: ('14sp')
+                font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
+                size_hint: 0.32, 0.15
+                pos_hint: {'right': 1}
+                on_press:
+                    root.sign_up(username.text, first_name.text, last_name.text, email.text, password.text)
